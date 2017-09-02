@@ -48,7 +48,7 @@ int main() {
     for (size_t i = 0; i < N; i++)
     {
 
-        trajectory.at(i).position = Eigen::Vector3d(i+1.0,.5,0);
+        trajectory.at(i).position = Eigen::Vector3d(i+2.0,.5,0);
         trajectory.at(i).heading      = 15.0/180.0*M_PI;
         trajectory.at(i).tol_position = 0.1;
         trajectory.at(i).tol_heading  = 5.0 /180*M_PI;
@@ -65,7 +65,7 @@ int main() {
               << robotPose.position.z() <<")"
               << "yaw = " <<  robotPose.getYaw()*180/M_PI << "deg." << std::endl;
 
-     while(pathTracker.getNavigationState() != TARGET_REACHED ){
+     for(int i = 0; i < 2000; i++) { // while (pathTracker.getNavigationState() != TARGET_REACHED ){
       // = = =  Get motion commands  = = =
       pathTracker.update(mc);
       /*
@@ -99,11 +99,14 @@ int main() {
         robotPose.orientation = Eigen::Quaterniond(robotRot)*robotPose.orientation;
       }
 
-      std::cout << "Robot = (" << robotPose.position.x() <<","
-                << robotPose.position.y() <<","
-                << robotPose.position.z() <<"), "
-                << "yaw = "<<  robotPose.getYaw()*180/M_PI << " deg."
-                << std::endl << std::endl;
+      if (0 == i % 10) {
+        std::cout << " - " << i << " Robot = (" << robotPose.position.x() <<","
+        << robotPose.position.y() << "," << robotPose.position.z() <<"),"
+        << " yaw = "<<  robotPose.getYaw()*180/M_PI << " deg."
+        << " navState = " << pathTracker.getNavigationState()
+        << std::endl;
+
+      }
       pathTracker.setPose(robotPose);
     }
 

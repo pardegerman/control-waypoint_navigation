@@ -17,8 +17,7 @@ LINK_DIRECTORIES(${BASE_TYPES_LIBRARY_DIRS})
 INCLUDE_DIRECTORIES(/usr/include/eigen2)
 
 ADD_LIBRARY(waypoint_navigation SHARED WaypointNavigation.cpp)
-#TARGET_LINK_LIBRARIES(xsens xsensVendorLib) 
-#${DFKI_TYPES_LIBS})
+TARGET_LINK_LIBRARIES(waypoint_navigation ${BASE_TYPES_LIBRARIES}) 
 
 #need to link to some other libraries ? just add them here
 #TARGET_LINK_LIBRARIES(driver png jpeg)

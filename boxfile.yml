@@ -1,0 +1,23 @@
+run.config:
+  engine: none 
+  dev_packages:
+    - cmake
+    - autoconf
+    - automake
+  extra_packages:
+    - boost
+#  extra_steps:
+#    - cd /tmp && \
+#      mkdir _build &&\
+#      git clone https://github.com/rock-core/base-cmake.git &&\
+#      mkdir _build/base-cmake && cd _build/base-cmake
+#    - cmake -G Ninja ../../base-cmake
+#    - ninja && sudo ninja install
+#    - git clone https://github.com/rock-core/base-logging.git
+#    - mkdir _build/base-logging && cd _build/base-logging
+#    - cmake -G Ninja ../../base-logging
+#    - ninja && ninja install
+#    - git clone https://github.com/rock-core/base-types.git
+#    - mkdir _build/base-types && cd _build/base-types
+#    - cmake -G Ninja ../../base-types
+#    - ninja && ninja install
